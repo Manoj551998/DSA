@@ -1,0 +1,29 @@
+package Contest_22_8_2021;
+
+import java.io.*;
+import java.util.*;
+
+public class IceCream {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i = 0; i < t; i++)
+        {
+            int amt = sc.nextInt();
+            int flv = sc.nextInt();
+            Map<Integer, Integer> map = new HashMap<>();
+            for(int j=1;j<=flv;j++)
+            {
+            	int s=sc.nextInt();
+            	if(map.containsKey(s))
+            	{
+            		System.out.println(map.get(s)+" "+j);
+            	}
+            	map.put(amt-s, j);
+            }
+            
+        }
+    }
+}
