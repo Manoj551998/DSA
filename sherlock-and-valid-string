@@ -1,0 +1,68 @@
+package Contest_22_8_2021;
+
+import java.io.*;
+import java.util.*;
+
+public class SherlockAndValidString {
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        
+        Map<Character, Integer> freqn = new HashMap<>();
+        
+        for(char ch : s.toCharArray())
+        {
+            if(freqn.containsKey(ch))
+            	freqn.put(ch, freqn.get(ch) + 1);
+            else
+            	freqn.put(ch, 1);
+        }
+//        for (Map.Entry<Character, Integer> entry : freqn.entrySet())
+//            System.out.println("Key = " + entry.getKey() +
+//                             ", Value = " + entry.getValue());
+        
+        
+        
+        Set<Integer> st = new HashSet<>();
+        for(int freq : freqn.values())
+        {
+            st.add(freq);
+        }
+        
+        if(st.size() > 2)
+            System.out.println("NO");
+        else if(st.size() == 1)
+            System.out.println("YES");
+        else
+        {
+            int f1 = 0;
+            int f2 = 0;
+            int f1c = 0;
+            int f2c = 0;
+            int i = 0;
+            for(int n : st)
+            {
+                if(i == 0) f1 = n;
+                else f2 = n;
+                i++;
+            }
+            
+            for(int freq : freqn.values())
+            {
+                if(freq == f1) f1c++;
+                if(freq == f2) f2c++;
+            }
+            
+            
+            
+            if((f1 == 1 && f1c == 1 ) || (f2 == 1 && f2c == 1 ))
+                System.out.println("YES");
+            else if ((Math.abs(f1 - f2)  == 1) && (f1c == 1 || f2c == 1))
+                System.out.println("YES");
+            else
+                System.out.println("NO");
+        }
+    }
+}
