@@ -1,0 +1,16 @@
+class Solution {
+    public int mySqrt(int inp) {
+        long ans=0;
+        if(inp==0||inp==1)
+        {
+            return inp;
+        }
+        
+		for(long i=0;i*i<=inp;i++)
+		{
+			ans=i;
+		}
+        
+		return (int)ans;
+    }
+}
