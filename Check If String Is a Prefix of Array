@@ -1,0 +1,31 @@
+class Solution {
+    public boolean isPrefixString(String s, String[] words) {
+
+        int j=0;int ind=0;
+        for(int i=0;i<s.length();i++)
+        {
+            if(ind==words.length)
+            {
+                return false;
+            }
+            if(s.charAt(i)!=words[ind].charAt(j))
+            {
+                return false;
+            }
+            j++;
+            if(j==words[ind].length())
+            {
+                ind++;
+                j=0;
+            }
+        }
+
+        if(j!=0)
+        {
+            return false;
+        }
+
+        return true;
+
+    }
+}
