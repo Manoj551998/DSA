@@ -1,0 +1,103 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Stack;
+class Node
+{
+	int data;
+	Node next;
+	Node(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
+
+class ListMethods
+{
+	Node head;
+	ListMethods()
+	{
+		head=null;
+		
+	}
+	void add(int val)
+	{
+		
+		if(head==null)
+		{
+			head=new Node(val);
+			return;
+		}
+		Node curr=head;
+		while(curr.next!=null)
+		{
+			curr=curr.next;
+		}
+		curr.next=new Node(val);
+	}
+	void reverse()
+	{
+		Node curr=head;
+		Node prev=null;
+		Node next=null;
+		while(curr!=null)
+		{
+			next=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=next;
+			
+		}head=prev;
+		
+	}
+	int length() //to find Length of Linked list
+	{
+		int count=0;
+		Node curr=head;
+		while(curr!=null)
+		{
+			count++;
+			curr=curr.next;
+		}
+		
+		return count;
+	}
+	void traverse()
+	{
+		Node curr=head;
+		System.out.println("Below is traversal of Linked list");
+		while(curr!=null)
+		{
+			System.out.print(curr.data);
+			if(curr.next!=null)
+			{
+				System.out.print("-->");
+			}
+			curr=curr.next;
+		}
+		System.out.println();
+	}
+}
+
+
+class DecryptString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		ListMethods lm=new ListMethods();
+		int limit=sc.nextInt();int i=0;
+		while(i<limit)
+		{
+			lm.add(sc.nextInt());
+			i++;
+		}
+		System.out.println("Before reversal");
+		lm.traverse();
+		lm.reverse();
+		System.out.println("After reversal");
+		lm.traverse();
+		System.out.println("Length of LL is "+lm.length());
+	}
+
+}
