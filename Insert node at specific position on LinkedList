@@ -1,0 +1,101 @@
+
+import java.util.Scanner;
+import java.util.Stack;
+class Node
+{
+	int data;
+	Node next;
+	Node(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
+
+class ListMethods
+{
+	Node head;
+	ListMethods()
+	{
+		head=null;
+	}
+	void add(int val)
+	{
+		
+		
+		if(head==null)
+		{
+			head=new Node(val);
+			return;
+			
+		}
+		Node curr=head;
+		while(curr.next!=null)
+		{
+			curr=curr.next;
+		}
+		curr.next=new Node(val);
+		
+	}
+	void add(int pos,int val)
+	{
+		
+		Node temp;
+		if(pos==1)
+		{
+			temp=new Node(val);
+			temp.next=head;
+			head=temp;
+		}
+		else
+		{
+			int count=1;
+			Node curr=head;
+			while(count<pos-1)
+			{
+				curr=curr.next;
+				count++;
+			}
+			temp=curr.next;
+			curr.next=new Node(val);
+			curr=curr.next;
+			curr.next=temp;
+		}
+	}
+	void traverse()
+	{
+		Node curr=head;
+		while(curr!=null)
+		{
+			System.out.print(curr.data+"-->");
+			curr=curr.next;
+		}
+		System.out.println("null");
+	}
+	
+}
+
+
+class DecryptString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		ListMethods lm=new ListMethods();
+		int limit=sc.nextInt();int i=0;
+		while(i<limit)
+		{
+			lm.add(sc.nextInt());
+			i++;
+		}
+		System.out.println("Traversal below");
+		lm.traverse();
+		System.out.println("Enter position and value to add");
+		int pos=sc.nextInt();
+		int val=sc.nextInt();
+		lm.add(pos,val);
+		System.out.println("After reversal");
+		lm.traverse();
+	}
+
+}
