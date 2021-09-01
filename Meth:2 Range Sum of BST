@@ -1,0 +1,27 @@
+class Solution {
+    public int rangeSumBST(TreeNode root, int low, int high) {
+      ArrayList<Integer>al=new ArrayList<>();
+     fun(root, low,high,al);
+     int sum=0;
+      for(int i:al)
+      {
+       sum+=i; 
+      }
+      return sum;
+      
+    }
+ void fun(TreeNode root,int low,int high,ArrayList<Integer>al)
+  {
+    if(root==null)
+    {
+      return;
+    }
+    if(root.val>=low&&root.val<=high)
+    {
+      al.add(root.val);
+    }
+    fun(root.left,low,high,al);
+    fun(root.right,low,high,al);
+    
+  }
+}
