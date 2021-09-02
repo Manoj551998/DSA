@@ -1,0 +1,31 @@
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+      if(head==null)
+      {
+        return null;
+        }
+      ListNode slowptr=head;
+      ListNode fastptr=head;
+      while(fastptr.next!=null&&fastptr.next.next!=null)
+      {
+        fastptr=fastptr.next.next;
+        slowptr=slowptr.next;
+        if(slowptr==fastptr)
+        {
+          return detect(slowptr,head);
+        }
+      }
+      return null;
+    }
+  
+   ListNode detect(ListNode slowptr, ListNode head)
+  {
+    ListNode temp=head;
+    while(temp!=slowptr)
+    {
+      temp=temp.next;
+      slowptr=slowptr.next;
+    }
+    return temp;
+  }
+}
