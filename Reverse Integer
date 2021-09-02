@@ -1,0 +1,15 @@
+class Solution {
+    public int reverse(int x) {
+      int last=0;
+      long ans=0; // long because result may overflow the Integer range limit
+      while(x!=0)
+      {
+        last=x%10;
+        x/=10;
+        ans=(ans*10)+last;
+      }
+      if(ans>Integer.MAX_VALUE||ans<Integer.MIN_VALUE) //adapting for constrains
+        return 0;
+      return (int)ans;
+    }
+}
