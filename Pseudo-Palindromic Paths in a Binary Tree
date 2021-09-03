@@ -1,0 +1,39 @@
+class Solution {
+    public int pseudoPalindromicPaths (TreeNode root) {
+      int []freq=new int[10];  
+      return fun(root,freq);
+    }
+  int fun(TreeNode root,int freq[])
+  {
+    if(root==null)
+    {
+      return 0;
+    }
+    freq[root.val]++;
+    if(root.right==null&&root.left==null)
+    {
+      int noofOdds=0;
+      for(int i=0;i<10;i++)
+      {
+        if(freq[i]%2==1)
+        {
+          noofOdds++;
+        }
+      }
+      freq[root.val]--;
+      if(noofOdds>1)
+      {
+        return 0;
+        
+      }
+      else
+      {
+        return 1;
+      }
+    }
+    int ans=fun(root.left,freq);
+    ans+=fun(root.right,freq);
+    freq[root.val]--;
+    return ans;
+  }
+}
