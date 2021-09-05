@@ -1,0 +1,26 @@
+import java.util.Scanner;
+ 
+public class Main {
+ 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int r=3;
+		int c=3;
+		int r1=0;
+		int c1=0;
+		for(int i=1;i<=5;i++)
+		{
+			String str=sc.nextLine().replace(" ", "");
+			if(str.contains("1"))
+			{
+				r1=i;
+				c1=str.indexOf("1")+1;
+				break;
+			}
+		}
+		System.out.println(Math.abs(r-r1)+Math.abs(c-c1));
+ 
+	}
+ 
+}
