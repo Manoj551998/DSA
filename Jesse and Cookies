@@ -1,0 +1,20 @@
+public static int cookies(int k, List<Integer> A) {
+    // Write your code here
+    PriorityQueue<Integer>pq=new PriorityQueue<>();
+    int c=0;
+    for(int i=0;i<A.size();i++)
+    {
+     pq.add(A.get(i));   
+    }
+    while(pq.peek()<k&&pq.size()>=2)
+        {
+        pq.add(pq.poll()+2*pq.poll());
+        c++;
+        }
+        if(pq.size()==1 && pq.peek()<k)
+        {
+            c=-1;
+        }
+        return c;
+    
+    }
