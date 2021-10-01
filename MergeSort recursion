@@ -1,0 +1,72 @@
+import java.util.Scanner;
+
+class MergeSort {
+	static void mergesort(int []a)
+	{
+		int n=a.length;
+		if(n<2)
+		{
+			return;
+		}
+		int mid=n/2;
+		int []left=new int[mid];
+		int []right=new int[n-mid];
+		for(int i=0;i<mid;i++)
+		{
+			left[i]=a[i];
+		}
+		for(int i=mid;i<n;i++)
+		{
+			right[i-mid]=a[i];
+		}
+		mergesort(left);
+		mergesort(right);
+		merge(left,right,a);
+	}
+	static void merge(int a[],int b[],int c[])
+	{
+		int i=0;
+		int j=0;
+		int k=0;
+		int m=a.length;
+		int n=b.length;
+		while(i<m&&j<n)
+		{
+			if(a[i]<b[j])
+			{
+				c[k++]=a[i++];
+			}
+			else
+			{
+				c[k++]=b[j++];
+			}
+		}
+		while(i<m)
+		{
+			c[k++]=a[i++];
+		}
+		while(j<n)
+		{
+			c[k++]=b[j++];
+		}
+			
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int a[]=new int[n];
+		for(int i=0;i<n;i++)
+		{
+			a[i]=sc.nextInt();
+		}
+		
+		mergesort(a);
+		for(int i:a)
+		{
+			System.out.print(i+" ");
+		}
+	}
+
+}
