@@ -1,0 +1,22 @@
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+      Arrays.sort(nums);
+      int l=nums[nums.length-1];
+      int a[]=new int[l+1];
+      //Arrays.fill(a,0);
+      for(int i=0;i<nums.length;i++)
+      {
+        a[nums[i]]++;
+      }
+      int ans=0;
+      for(int i=0;i<a.length;i++)
+      {
+        System.out.print(i+" ");
+        if(a[i]==1)
+        {
+          ans=i;
+        }
+      }
+        return ans;
+    }
+}
