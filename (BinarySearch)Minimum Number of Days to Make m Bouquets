@@ -1,0 +1,45 @@
+class Solution {
+    public int minDays(int[] arr, int m, int k) {
+        if(m*k>arr.length){return -1;}
+      int left=1;
+      int right=(int)1e9;
+      while(left<right)
+      {
+        int mid=left+(right-left)/2;
+        System.out.println("left "+left);
+        System.out.println("right "+right);
+        System.out.println("mid "+mid);
+        int b=0;
+        int f=0;
+        for(int i=0;i<arr.length;i++)
+        {
+          if(arr[i]>mid)
+          {
+            f=0;
+          }
+          else
+          {
+            f++;
+            if(f==k)
+            {
+              b++;
+              f=0;
+            }
+          }
+        
+        }
+        System.out.println("f "+f);
+        System.out.println("b "+b);
+        System.out.println("----------------------");
+        if(b<m)
+        {
+          left=mid+1;
+        }
+        else
+        {
+          right=mid;
+        }
+      }
+      return right;
+    }
+}
