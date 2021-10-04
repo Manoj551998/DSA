@@ -1,0 +1,93 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+class Result {
+
+    /*
+     * Complete the 'lilysHomework' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts INTEGER_ARRAY arr as parameter.
+     */
+
+    public static int lilysHomework(List<Integer> arr) {
+    // Write your code here
+        TreeMap<Integer,Integer>m1=new TreeMap<>();
+        TreeMap<Integer,Integer>m2=new TreeMap<>();
+        int as[]=new int[arr.size()];
+        for(int i=0;i<arr.size();i++)
+        {
+            m1.put(arr.get(i),i);
+            m2.put(arr.get(i),i);
+            as[i]=arr.get(i);
+        }
+        int index=0;
+        int sf=0;
+        while(index<arr.size())
+        {
+            int smallestNum=m1.firstKey();
+            if(arr.get(index)!=smallestNum)
+            {
+                int targetIndex=m1.get(smallestNum);
+                int temp=arr.get(index);
+                arr.set(index,smallestNum);
+                arr.set(targetIndex,temp);
+                
+                m1.put(arr.get(targetIndex),targetIndex);
+                sf++;
+            } 
+            index++;
+            m1.remove(smallestNum);
+        }
+        index=as.length-1;
+        int sb=0;
+        while(index>=0)
+        {
+            int smallestNum=m2.firstKey();
+            if(as[index]!=smallestNum)
+            {
+                int targetIndex=m2.get(smallestNum);
+                int temp=as[index];
+                as[index]=smallestNum;
+                as[targetIndex]=temp;
+                m2.put(as[targetIndex],targetIndex);
+                sb++;
+            }
+            index--;
+            m2.remove(smallestNum);
+        }
+        return Math.min(sf,sb);
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        int n = Integer.parseInt(bufferedReader.readLine().trim());
+
+        String[] arrTemp = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        List<Integer> arr = new ArrayList<>();
+
+        for (int i = 0; i < n; i++) {
+            int arrItem = Integer.parseInt(arrTemp[i]);
+            arr.add(arrItem);
+        }
+
+        int result = Result.lilysHomework(arr);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
