@@ -1,0 +1,118 @@
+package arrays;
+import java.util.*;
+import java.io.*;
+class Node
+{
+	Node next;
+	int data;
+	Node(int data)
+	{
+		next=null;
+		this.data=data;
+	}
+}
+class Lmeth
+{
+	Node head;
+	Node endn=null;
+	Lmeth()
+	{
+		head=null;
+	}
+	void add(int val)
+	{
+		if(head==null)
+		{
+			head=new Node(val);
+			return;
+		}
+		Node curr=head;
+		while(curr.next!=null)
+		{
+			curr=curr.next;
+		}
+		curr.next=new Node(val);
+		
+	}
+	void PartReversal(int StartPos,int EndPos)
+	{
+		Node cur=head;
+		int s=1;
+		
+		
+		while(s+1!=StartPos)
+		{
+			cur=cur.next;
+			s++;
+		}
+		Node rev=reverse(cur.next,s,EndPos);
+		//Node t2=cur.next;
+		cur.next=rev;
+		while(cur.next!=null)
+		{
+			cur=cur.next;
+		}
+		cur.next=endn;
+		
+		//System.out.print(cur.data+" ");
+	}
+	
+	Node reverse(Node start,int s,int end)
+	{
+		Node prev=null;
+		Node t1=start;
+		Node next=null;
+		
+		while(t1.next!=null&&s<=end-1)
+		{
+			next=t1.next;
+			t1.next=prev;
+			prev=t1;
+			t1=next;
+			endn=t1;
+			//System.out.print(prev.data+" ");
+			s++;
+		}
+		return prev;
+	}
+	void traverse()
+	{
+		Node curr=head;
+		while(curr!=null)
+		{
+			System.out.print(curr.data +" ");
+			curr=curr.next;
+		}
+	}
+}
+
+class MissingNumber {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Scanner sc=new Scanner(System.in);
+       Lmeth lm=new Lmeth();
+       System.out.println("This Problem is to reverse a part of linked list");
+       System.out.println("------------------------------------------------");
+       System.out.println("Enter total no of nodes to allocate");
+        int n=sc.nextInt();
+        System.out.println("Enter Elements one by one");
+        for(int i=0;i<n;i++)
+        {
+        	lm.add(sc.nextInt());
+        }
+        System.out.println("Enter Reversal start position");
+        int start=sc.nextInt();
+        System.out.println("Enter Reversal end position");
+        int end=sc.nextInt();
+        sc.close();
+        System.out.println("Before reversing a part");
+        lm.traverse();
+        lm.PartReversal(start, end);
+        System.out.println();
+        System.out.println("------------------------------------------------");
+        System.out.println("After reversing a part");
+        lm.traverse();
+    }
+
+}
