@@ -1,0 +1,76 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode addTwoNumbers(ListNode m1, ListNode m2) {
+        Stack<Integer>q1=new Stack<>();
+        Stack<Integer>q2=new Stack<>();
+        Stack<Integer>qu=new Stack<>();
+        ListNode l1=m1;
+      
+        ListNode l2=m2;
+        while(l1!=null)
+        {
+          q1.push(l1.val);
+          l1=l1.next;
+        }
+        while(l2!=null)
+        {
+          q2.push(l2.val);
+          l2=l2.next;
+        }
+      int carry=0;
+      while(!q1.isEmpty()||!q2.isEmpty())
+      { int e1=0;
+        int e2=0;
+         if(!q1.isEmpty())
+      {
+         e1=q1.pop();
+                    
+      }
+        if(!q2.isEmpty())
+          {
+             e2=q2.pop();
+          }
+        int c=e1+e2+carry;
+       carry=0;
+        int d=c;
+       if(c>9)
+       {
+         carry=c/10;
+         c=c%10;
+         
+       }
+        qu.add(c);
+      }
+      if(carry!=0)
+      {
+        qu.add(carry);
+      }
+      ListNode result=null; 
+      ListNode ans=null; 
+     while(!qu.isEmpty())
+     {
+       System.out.print(qu.peek()+" ");
+       if(result==null)
+       {
+        result=new ListNode(qu.pop());
+        ans=result;
+       }
+       else
+       {
+         result.next=new ListNode(qu.pop());
+         result=result.next;
+        }
+      
+     }
+       return ans; 
+    }
+}
