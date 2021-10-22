@@ -1,0 +1,38 @@
+class Solution {
+  public static void makeswap(int l,int m,int[] nums)
+     {
+      int t=nums[l];
+      nums[l]=nums[m];
+      nums[m]=t;       
+     }
+    public void sortColors(int[] nums) {
+        int le=0;
+        int mid=0;
+        int ri=nums.length-1;
+      while(mid<=ri)
+      {
+        System.out.print(le+" "+mid+" "+ri);
+        System.out.println(Arrays.toString(nums));
+        if(nums[mid]==0)
+        {
+          makeswap(le,mid,nums);
+          le++;
+          mid++;
+        }
+        else if(nums[mid]==1)
+        {
+          mid++;
+        }
+        else if(nums[mid]==2)
+        {
+          makeswap(mid,ri,nums);
+          ri--;
+        }
+        
+         
+      } 
+      System.out.print(ri+" "+mid+" "+le);
+      
+      System.out.println(Arrays.toString(nums));
+    }
+}
