@@ -1,0 +1,23 @@
+import java.util.*;
+import java.io.*;
+
+//given two arrays 1st array is int rank array then 2nd array is char array.here task is want to print sort the rank array ans also 
+//and also swap 2nd arr as per the rank swap finally print the char presented as per 1st array.  
+class MissingNumber {
+	
+    
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+    	int a[]= {5,3,4,2,1};
+    	char c[]={'p','r','a','v','e'};
+		TreeMap<Integer,Character>map=new TreeMap<>();
+		for(int i=0;i<c.length;i++)
+		{
+			map.put(a[i],c[i]);
+			
+		}
+		System.out.print(map.firstEntry());
+	
+    }
+}
