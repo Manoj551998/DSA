@@ -1,0 +1,33 @@
+import java.util.*;
+import java.io.*;
+
+
+class CopyOfArray {
+	
+    
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+    	int a[]= {5,3,4,2,1};
+    	int n=a.length;
+    	int a2[]=new int[2*n];
+    	for(int i=0;i<2*n;i++)
+    	{
+    		if(i<n)
+    		{
+    			a2[i]=a[i];
+    		}
+    		else
+    		{
+    			a2[i]=a[i-n];
+    		}
+    		
+    	}
+    	for(int i:a2)
+    	{
+    		System.out.print(i);
+    	}
+    	
+	
+    }
+}
