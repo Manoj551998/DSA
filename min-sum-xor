@@ -1,0 +1,16 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        int a1=(a^b)+(b^b);
+        int a2=(a^b)+(a^b);
+        int res=Math.min(a1,a2);
+        System.out.print(res);
+    }
+}
