@@ -1,0 +1,66 @@
+import java.util.*;
+import java.io.*;
+
+class Node
+{
+	Node next;
+	int data;
+	Node(int data)
+	{
+		this.data=data;
+		next=null;
+	}
+}
+class LLMethods
+{
+	Node head;
+	LLMethods()
+	{
+		head=null;
+	}
+	void addAtEnd(int val)
+	{
+		if(head==null)
+		{
+			head=new Node(val);
+			return;
+		}
+		Node curr=head;
+		while(curr.next!=null)
+		{
+			curr=curr.next;
+		}
+		curr.next=new Node(val);
+	}
+	void traverse()
+	{
+		Node curr=head;
+		while(curr!=null)
+		{
+			System.out.print(curr.data);
+			if(curr.next!=null)
+			{
+				System.out.print("-->");
+			}
+			curr=curr.next;
+		}
+	}
+}
+class SinglyLinkedListCreation {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+    	Scanner sc=new Scanner(System.in);
+    	LLMethods meth=new LLMethods();
+    	System.out.println("Enter number of elements");
+    	int n=sc.nextInt();
+		sc.nextLine();
+		for(int i=0;i<n;i++)
+		{
+			int el=sc.nextInt();
+			meth.addAtEnd(el);
+		}
+		System.out.println("Traversing the linked list");
+		meth.traverse();
+		sc.close();
+    }
+}
